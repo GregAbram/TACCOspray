@@ -34,4 +34,8 @@ cd ~/local/src
 git clone https://github.com/ospray/ospray.git
 git checkout release-2.9.x
 mkdir build
-`
+cd build
+cmake --build .
+
+Note: this failes on openvkl the first time; seems better second time through (check)
+
