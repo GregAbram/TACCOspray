@@ -40,7 +40,8 @@ RUN apt-get --yes -qq update \
                       libgssapi-krb5-2 \
                       libqt5gui5 \
                       htop \
-                      libglew-dev
+                      libglew-dev \
+                      libncurses5-dev
 
 RUN apt-get update && apt-get -y install openssl libssl-dev
 
