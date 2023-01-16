@@ -1,0 +1,19 @@
+FROM jungwhonam/ospray-env:gcc-8
+
+ARG RELEASE_URL=https://github.com/jungwhonam-tacc/ospray/archive/refs/tags/v2.11.0-alpha.1.tar.gz
+ARG TAR_NAME=v2.11.0-alpha.1.tar.gz
+ARG EXTRACT_DIR_NAME=ospray-2.11.0-alpha.1
+ARG BUILD_DIR_NAME=build
+ARG CMAKE_CONFIG_ARG=../scripts/superbuild\ -DCMAKE_BUILD_TYPE=Release\ -DBUILD_OSPRAY_MODULE_MPI=ON\ -DBUILD_EMBREE_FROM_SOURCE=OFF
+
+RUN wget ${RELEASE_URL} \
+  && tar xzf ${TAR_NAME} \
+  && rm ${TAR_NAME} \
+  && cd ${EXTRACT_DIR_NAME} \
+  && mkdir ${BUILD_DIR_NAME} \
+  && cd ${BUILD_DIR_NAME} \
+  && cmake ${CMAKE_CONFIG_ARG} \
+  && cmake --build . \
+  && cmake --install .
+
+WORKDIR /home/ospray/${EXTRACT_DIR_NAME}/${BUILD_DIR_NAME}
