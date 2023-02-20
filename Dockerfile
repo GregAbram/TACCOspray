@@ -41,7 +41,8 @@ RUN apt-get --yes -qq update \
                       libqt5gui5 \
                       htop \
                       libglew-dev \
-                      libncurses5-dev
+                      libncurses5-dev \
+                      gdb
 
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 8 && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 8
 
